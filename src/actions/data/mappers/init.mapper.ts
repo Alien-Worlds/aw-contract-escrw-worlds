@@ -1,12 +1,9 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Mon, 10 Jul 2023 09:40:01 GMT
+ * Last updated on: Thu, 13 Jul 2023 08:24:06 GMT
  */
 
-import {
-  MapperImpl,
-  parseToBigInt,
-} from '@alien-worlds/api-core';
+import { MapperImpl } from '@alien-worlds/api-core';
 import { MongoDB } from '@alien-worlds/storage-mongodb';
 import { Init  } from "../../domain/entities";
 import { InitMongoModel, InitRawModel  } from "../dtos/init.dto";
@@ -20,44 +17,37 @@ export class InitMongoMapper
 
     this.mappingFromEntity.set('sender', { 
       key: 'sender', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('receiver', { 
       key: 'receiver', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('arb', { 
       key: 'arb', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('expires', { 
       key: 'expires', 
-      mapper: (value: Date) => 
-        value,
+      mapper: (value: Date) => value,
     });
 
     this.mappingFromEntity.set('memo', { 
       key: 'memo', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('extReference', { 
       key: 'ext_reference', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('dacId', { 
       key: 'dac_id', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
   }
@@ -71,18 +61,18 @@ export class InitMongoMapper
       memo,
       ext_reference,
       dac_id,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
     return Init.create(
-        sender ?? '',
-        receiver ?? '',
-        arb ?? '',
-        expires ?? new Date(0),
-        memo ?? '',
-        ext_reference ?? '',
-        dac_id ?? '',
+      sender || '',
+      receiver || '',
+      arb || '',
+      expires || new Date(0),
+      memo || '',
+      ext_reference || '',
+      dac_id || '',
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -111,13 +101,13 @@ export class InitRawMapper
     } = rawModel;
 
     return Init.create(
-        sender ?? '',
-        receiver ?? '',
-        arb ?? '',
-        expires ?? new Date(0),
-        memo ?? '',
-        ext_reference ?? '',
-        dac_id ?? '',
+      sender || '',
+      receiver || '',
+      arb || '',
+      expires || new Date(0),
+      memo || '',
+      ext_reference || '',
+      dac_id || '',
       undefined,
       rest
     );

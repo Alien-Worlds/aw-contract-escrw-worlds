@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Mon, 10 Jul 2023 09:40:01 GMT
+ * Last updated on: Thu, 13 Jul 2023 08:24:06 GMT
  */
 
 import { Entity, UnknownObject } from "@alien-worlds/api-core";
@@ -50,6 +50,9 @@ export class Disapprove implements Entity {
    *
    * @static
    * @public
+   * @param string key
+   * @param string disapprover
+   * @param string dacId
    * @returns `Disapprove` An instance of the `Disapprove` class.
    */
   public static create(
@@ -63,7 +66,7 @@ export class Disapprove implements Entity {
       key,
       disapprover,
       dacId,
-      id
+      id,
     );
     entity.rest = rest;
 

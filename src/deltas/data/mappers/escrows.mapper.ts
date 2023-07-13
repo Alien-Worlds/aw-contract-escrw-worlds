@@ -1,12 +1,9 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Mon, 10 Jul 2023 09:40:01 GMT
+ * Last updated on: Thu, 13 Jul 2023 08:24:06 GMT
  */
 
-import {
-  MapperImpl,
-  parseToBigInt,
-} from '@alien-worlds/api-core';
+import { MapperImpl } from '@alien-worlds/api-core';
 import { MongoDB } from '@alien-worlds/storage-mongodb';
 import { ExtendedAsset, ExtendedAssetMongoMapper, ExtendedAssetRawMapper } from '@alien-worlds/eosio-contract-types';
 import { Escrows  } from "../../domain/entities";
@@ -21,56 +18,47 @@ export class EscrowsMongoMapper
 
     this.mappingFromEntity.set('key', { 
       key: 'key', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('sender', { 
       key: 'sender', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('receiver', { 
       key: 'receiver', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('arb', { 
       key: 'arb', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('receiverPay', { 
       key: 'receiver_pay', 
-      mapper: (value: ExtendedAsset) => 
-           new ExtendedAssetMongoMapper().fromEntity(value)
+      mapper: (value: ExtendedAsset) => new ExtendedAssetMongoMapper().fromEntity(value),
     });
 
     this.mappingFromEntity.set('arbitratorPay', { 
       key: 'arbitrator_pay', 
-      mapper: (value: ExtendedAsset) => 
-           new ExtendedAssetMongoMapper().fromEntity(value)
+      mapper: (value: ExtendedAsset) => new ExtendedAssetMongoMapper().fromEntity(value),
     });
 
     this.mappingFromEntity.set('memo', { 
       key: 'memo', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('expires', { 
       key: 'expires', 
-      mapper: (value: Date) => 
-        value,
+      mapper: (value: Date) => value,
     });
 
     this.mappingFromEntity.set('disputed', { 
       key: 'disputed', 
-      mapper: (value: boolean) => 
-        value,
+      mapper: (value: boolean) => value,
     });
 
   }
@@ -86,24 +74,20 @@ export class EscrowsMongoMapper
       memo,
       expires,
       disputed,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
     return Escrows.create(
-        key ?? '',
-        sender ?? '',
-        receiver ?? '',
-        arb ?? '',
-        receiver_pay 
-          ? new ExtendedAssetMongoMapper().toEntity(receiver_pay)
-          : ExtendedAsset.getDefault(),
-        arbitrator_pay 
-          ? new ExtendedAssetMongoMapper().toEntity(arbitrator_pay)
-          : ExtendedAsset.getDefault(),
-        memo ?? '',
-        expires ?? new Date(0),
-        disputed ?? false,
+      key || '',
+      sender || '',
+      receiver || '',
+      arb || '',
+      new ExtendedAssetMongoMapper().toEntity(receiver_pay),
+      new ExtendedAssetMongoMapper().toEntity(arbitrator_pay),
+      memo || '',
+      expires || new Date(0),
+      disputed || false,
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -134,19 +118,15 @@ export class EscrowsRawMapper
     } = rawModel;
 
     return Escrows.create(
-        key ?? '',
-        sender ?? '',
-        receiver ?? '',
-        arb ?? '',
-        receiver_pay 
-          ? new ExtendedAssetRawMapper().toEntity(receiver_pay)
-          : ExtendedAsset.getDefault(),
-        arbitrator_pay 
-          ? new ExtendedAssetRawMapper().toEntity(arbitrator_pay)
-          : ExtendedAsset.getDefault(),
-        memo ?? '',
-        expires ?? new Date(0),
-        disputed ?? false,
+      key || '',
+      sender || '',
+      receiver || '',
+      arb || '',
+      new ExtendedAssetRawMapper().toEntity(receiver_pay),
+      new ExtendedAssetRawMapper().toEntity(arbitrator_pay),
+      memo || '',
+      expires || new Date(0),
+      disputed || false,
       undefined,
       rest
     );

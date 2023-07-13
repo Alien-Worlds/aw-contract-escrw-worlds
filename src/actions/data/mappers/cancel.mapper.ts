@@ -1,12 +1,9 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Mon, 10 Jul 2023 09:40:00 GMT
+ * Last updated on: Thu, 13 Jul 2023 08:24:06 GMT
  */
 
-import {
-  MapperImpl,
-  parseToBigInt,
-} from '@alien-worlds/api-core';
+import { MapperImpl } from '@alien-worlds/api-core';
 import { MongoDB } from '@alien-worlds/storage-mongodb';
 import { Cancel  } from "../../domain/entities";
 import { CancelMongoModel, CancelRawModel  } from "../dtos/cancel.dto";
@@ -20,14 +17,12 @@ export class CancelMongoMapper
 
     this.mappingFromEntity.set('key', { 
       key: 'key', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('dacId', { 
       key: 'dac_id', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
   }
@@ -36,13 +31,13 @@ export class CancelMongoMapper
     const { 
       key,
       dac_id,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
     return Cancel.create(
-        key ?? '',
-        dac_id ?? '',
+      key || '',
+      dac_id || '',
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -66,8 +61,8 @@ export class CancelRawMapper
     } = rawModel;
 
     return Cancel.create(
-        key ?? '',
-        dac_id ?? '',
+      key || '',
+      dac_id || '',
       undefined,
       rest
     );

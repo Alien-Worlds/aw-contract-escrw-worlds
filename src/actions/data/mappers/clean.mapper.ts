@@ -1,12 +1,9 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Mon, 10 Jul 2023 09:40:00 GMT
+ * Last updated on: Thu, 13 Jul 2023 08:24:06 GMT
  */
 
-import {
-  MapperImpl,
-  parseToBigInt,
-} from '@alien-worlds/api-core';
+import { MapperImpl } from '@alien-worlds/api-core';
 import { MongoDB } from '@alien-worlds/storage-mongodb';
 import { Clean  } from "../../domain/entities";
 import { CleanMongoModel, CleanRawModel  } from "../dtos/clean.dto";
@@ -20,8 +17,7 @@ export class CleanMongoMapper
 
     this.mappingFromEntity.set('dacId', { 
       key: 'dac_id', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
   }
@@ -29,12 +25,12 @@ export class CleanMongoMapper
   public toEntity(mongoModel: CleanMongoModel): Clean {
     const { 
       dac_id,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
     return Clean.create(
-        dac_id ?? '',
+      dac_id || '',
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -57,7 +53,7 @@ export class CleanRawMapper
     } = rawModel;
 
     return Clean.create(
-        dac_id ?? '',
+      dac_id || '',
       undefined,
       rest
     );

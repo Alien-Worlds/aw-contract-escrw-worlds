@@ -1,12 +1,9 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Mon, 10 Jul 2023 09:40:01 GMT
+ * Last updated on: Thu, 13 Jul 2023 08:24:06 GMT
  */
 
-import {
-  MapperImpl,
-  parseToBigInt,
-} from '@alien-worlds/api-core';
+import { MapperImpl } from '@alien-worlds/api-core';
 import { MongoDB } from '@alien-worlds/storage-mongodb';
 import { Dispute  } from "../../domain/entities";
 import { DisputeMongoModel, DisputeRawModel  } from "../dtos/dispute.dto";
@@ -20,14 +17,12 @@ export class DisputeMongoMapper
 
     this.mappingFromEntity.set('key', { 
       key: 'key', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
     this.mappingFromEntity.set('dacId', { 
       key: 'dac_id', 
-      mapper: (value: string) => 
-        value,
+      mapper: (value: string) => value,
     });
 
   }
@@ -36,13 +31,13 @@ export class DisputeMongoMapper
     const { 
       key,
       dac_id,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
     return Dispute.create(
-        key ?? '',
-        dac_id ?? '',
+      key || '',
+      dac_id || '',
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -66,8 +61,8 @@ export class DisputeRawMapper
     } = rawModel;
 
     return Dispute.create(
-        key ?? '',
-        dac_id ?? '',
+      key || '',
+      dac_id || '',
       undefined,
       rest
     );
