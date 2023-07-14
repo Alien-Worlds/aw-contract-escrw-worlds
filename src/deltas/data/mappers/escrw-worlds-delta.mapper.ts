@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:51:01 GMT
+ * Last updated on: Fri, 14 Jul 2023 19:24:42 GMT
  */
 
 
@@ -30,8 +30,7 @@ export class EscrwWorldsDeltaMongoMapper
         break;
     }
 
-    return {
-      _id: new MongoDB.ObjectId(entity.id),
+    const model: EscrwWorldsDeltaMongoModel = {
       block_timestamp: entity.blockTimestamp,
       block_number: new MongoDB.Long(entity.blockNumber),
       code: entity.code,
@@ -42,6 +41,12 @@ export class EscrwWorldsDeltaMongoMapper
       primary_key: new MongoDB.Long(entity.primaryKey),
       present: entity.present,
     };
+
+    if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
+      model._id =  new MongoDB.ObjectId(entity.id);
+    }
+    
+    return model;
   }
 
   public toEntity(
