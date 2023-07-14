@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:23:04 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:51:01 GMT
  */
 
 
@@ -8,7 +8,7 @@ import {
   Escrows,
 } from '../../domain/entities';
 import { ContractDelta, MapperImpl, parseToBigInt } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { DataEntityType } from '../../domain/entities/escrw-worlds-delta';
 import { EscrwWorldsDeltaMongoModel, EscrwWorldsDeltaRawModel } from '../dtos';
 import { EscrwWorldsTableName } from '../../domain/enums';
@@ -16,7 +16,7 @@ import { EscrowsMongoMapper, EscrowsRawMapper } from "./escrows.mapper";
 
 // Mongo Mapper
 export class EscrwWorldsDeltaMongoMapper
-  extends MapperImpl<ContractDelta<DataEntityType>, EscrwWorldsDeltaMongoModel>
+  extends MongoMapper<ContractDelta<DataEntityType>, EscrwWorldsDeltaMongoModel>
 {
   public fromEntity(
     entity: ContractDelta<DataEntityType>

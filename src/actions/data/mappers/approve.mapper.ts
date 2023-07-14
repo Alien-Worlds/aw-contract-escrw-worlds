@@ -1,16 +1,16 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:23:04 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:51:01 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { Approve  } from "../../domain/entities";
 import { ApproveMongoModel, ApproveRawModel  } from "../dtos/approve.dto";
 
 // Mongo Mappers
 export class ApproveMongoMapper
-  extends MapperImpl<Approve, ApproveMongoModel>
+  extends MongoMapper<Approve, ApproveMongoModel>
 {
   constructor() {
     super();

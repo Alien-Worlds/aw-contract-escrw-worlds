@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:23:04 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:51:01 GMT
  */
 
 
@@ -28,7 +28,7 @@ import { DisputeMongoMapper, DisputeRawMapper } from "./dispute.mapper";
 import { InitMongoMapper, InitRawMapper } from "./init.mapper";
 import { RefundMongoMapper, RefundRawMapper } from "./refund.mapper";
 import { TransferMongoMapper, TransferRawMapper } from "./transfer.mapper";
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { DataEntityType } from '../../domain/entities/escrw-worlds-action';
 import { 
   EscrwWorldsActionMongoModel,
@@ -54,7 +54,7 @@ import { EscrwWorldsActionName } from '../../domain/enums';
 
 // Mongo Mapper
 export class EscrwWorldsActionMongoMapper
-  extends MapperImpl<ContractAction<DataEntityType>, EscrwWorldsActionMongoModel>
+  extends MongoMapper<ContractAction<DataEntityType>, EscrwWorldsActionMongoModel>
 {
   public fromEntity(
     entity: ContractAction<DataEntityType>

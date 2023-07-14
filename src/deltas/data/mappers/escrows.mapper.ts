@@ -1,17 +1,17 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:23:04 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:51:01 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { ExtendedAsset, ExtendedAssetMongoMapper, ExtendedAssetRawMapper } from '@alien-worlds/eosio-contract-types';
 import { Escrows  } from "../../domain/entities";
 import { EscrowsMongoModel, EscrowsRawModel  } from "../dtos/escrows.dto";
 
 // Mongo Mappers
 export class EscrowsMongoMapper
-  extends MapperImpl<Escrows, EscrowsMongoModel>
+  extends MongoMapper<Escrows, EscrowsMongoModel>
 {
   constructor() {
     super();
