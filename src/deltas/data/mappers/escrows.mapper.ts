@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Thu, 13 Jul 2023 08:24:06 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:23:04 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
@@ -83,8 +83,8 @@ export class EscrowsMongoMapper
       sender || '',
       receiver || '',
       arb || '',
-      new ExtendedAssetMongoMapper().toEntity(receiver_pay),
-      new ExtendedAssetMongoMapper().toEntity(arbitrator_pay),
+      receiver_pay ? new ExtendedAssetMongoMapper().toEntity(receiver_pay) : ExtendedAsset.getDefault(),
+      arbitrator_pay ? new ExtendedAssetMongoMapper().toEntity(arbitrator_pay) : ExtendedAsset.getDefault(),
       memo || '',
       expires || new Date(0),
       disputed || false,
@@ -122,8 +122,8 @@ export class EscrowsRawMapper
       sender || '',
       receiver || '',
       arb || '',
-      new ExtendedAssetRawMapper().toEntity(receiver_pay),
-      new ExtendedAssetRawMapper().toEntity(arbitrator_pay),
+      receiver_pay ? new ExtendedAssetRawMapper().toEntity(receiver_pay) : ExtendedAsset.getDefault(),
+      arbitrator_pay ? new ExtendedAssetRawMapper().toEntity(arbitrator_pay) : ExtendedAsset.getDefault(),
       memo || '',
       expires || new Date(0),
       disputed || false,
