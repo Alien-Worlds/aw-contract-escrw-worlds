@@ -1,13 +1,13 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 19:24:42 GMT
+ * Last updated on: Thu, 27 Jul 2023 15:07:29 GMT
  */
 
 import {
   GetTableRowsOptions,
   Result,
   SmartContractService,
-} from '@alien-worlds/api-core';
+} from '@alien-worlds/aw-core';
 
 import { 
   EscrowsRawModel,

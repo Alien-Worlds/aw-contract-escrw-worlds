@@ -1,10 +1,10 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 19:24:41 GMT
+ * Last updated on: Thu, 27 Jul 2023 15:07:29 GMT
  */
 
-import { MongoDB } from '@alien-worlds/storage-mongodb';
-import { ExtendedAssetMongoModel, ExtendedAssetRawModel } from '@alien-worlds/eosio-contract-types';
+import { MongoDB } from '@alien-worlds/aw-storage-mongodb';
+import { ExtendedAssetMongoModel, ExtendedAssetRawModel } from '@alien-worlds/aw-antelope';
 
 /**
  * MongoDB Model(s) - Types representing data from MongoDB

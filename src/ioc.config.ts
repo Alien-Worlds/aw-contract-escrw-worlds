@@ -1,14 +1,14 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 19:24:42 GMT
+ * Last updated on: Thu, 27 Jul 2023 15:07:29 GMT
  */
 
-import { Container, RepositoryImpl } from '@alien-worlds/api-core';
+import { Container, RepositoryImpl } from '@alien-worlds/aw-core';
 import { 
   MongoConfig,
   MongoQueryBuilders, 
   MongoSource,
-} from '@alien-worlds/storage-mongodb';
+} from '@alien-worlds/aw-storage-mongodb';
 
 import { EscrwWorldsActionMongoMapper } from './actions/data/mappers';
 import { EscrwWorldsActionMongoSource } from './actions/data/data-sources';
@@ -18,7 +18,7 @@ import { EscrwWorldsContractServiceImpl } from "./services/escrw-worlds-contract
 import { EscrwWorldsDeltaMongoMapper } from './deltas/data/mappers';
 import { EscrwWorldsDeltaMongoSource } from './deltas/data/data-sources';
 import { EscrwWorldsDeltaRepository } from './deltas/domain/repositories';
-import { EosRpcSourceImpl } from '@alien-worlds/eos';
+import { AntelopeRpcSourceImpl } from '@alien-worlds/aw-antelope';
 
 export const setupEscrwWorldsActionRepository = async (
   mongo: MongoSource | MongoConfig,
@@ -77,12 +77,12 @@ export const setupEscrwWorldsDeltaRepository = async (
 };
 
 export const setupEscrwWorldsContractService = (
-  eosRpcSourceImpl: EosRpcSourceImpl,
+  antelopeRpcSourceImpl: AntelopeRpcSourceImpl,
   serviceUrl: string,
   container?: Container
 ): EscrwWorldsContractService => {
   const service = new EscrwWorldsContractServiceImpl(
-    eosRpcSourceImpl,
+    antelopeRpcSourceImpl,
     serviceUrl
   );
 

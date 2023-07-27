@@ -1,10 +1,10 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 19:24:41 GMT
+ * Last updated on: Thu, 27 Jul 2023 15:07:29 GMT
  */
 
-import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
+import { MapperImpl } from '@alien-worlds/aw-core';
+import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { Dispute  } from "../../domain/entities";
 import { DisputeMongoModel, DisputeRawModel  } from "../dtos/dispute.dto";
 
