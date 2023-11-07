@@ -3,21 +3,23 @@
  * Last updated on: Thu, 27 Jul 2023 15:07:29 GMT
  */
 
-
-import { 
-  Escrows,
-} from '../../domain/entities';
-import { ContractDelta, MapperImpl, parseToBigInt } from '@alien-worlds/aw-core';
+import { Escrows } from '../../domain/entities';
+import {
+  ContractDelta,
+  MapperImpl,
+  parseToBigInt,
+} from '@alien-worlds/aw-core';
 import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/escrw-worlds-delta';
 import { EscrwWorldsDeltaMongoModel, EscrwWorldsDeltaRawModel } from '../dtos';
 import { EscrwWorldsTableName } from '../../domain/enums';
-import { EscrowsMongoMapper, EscrowsRawMapper } from "./escrows.mapper";
+import { EscrowsMongoMapper, EscrowsRawMapper } from './escrows.mapper';
 
 // Mongo Mapper
-export class EscrwWorldsDeltaMongoMapper
-  extends MongoMapper<ContractDelta<DataEntityType>, EscrwWorldsDeltaMongoModel>
-{
+export class EscrwWorldsDeltaMongoMapper extends MongoMapper<
+  ContractDelta<DataEntityType>,
+  EscrwWorldsDeltaMongoModel
+> {
   public fromEntity(
     entity: ContractDelta<DataEntityType>
   ): EscrwWorldsDeltaMongoModel {
@@ -32,7 +34,7 @@ export class EscrwWorldsDeltaMongoMapper
 
     const model: EscrwWorldsDeltaMongoModel = {
       block_timestamp: entity.blockTimestamp,
-      block_number: new MongoDB.Long(entity.blockNumber),
+      block_num: new MongoDB.Long(entity.blockNumber),
       code: entity.code,
       scope: entity.scope,
       table: entity.table,
@@ -43,9 +45,9 @@ export class EscrwWorldsDeltaMongoMapper
     };
 
     if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
-      model._id =  new MongoDB.ObjectId(entity.id);
+      model._id = new MongoDB.ObjectId(entity.id);
     }
-    
+
     return model;
   }
 
@@ -61,7 +63,7 @@ export class EscrwWorldsDeltaMongoMapper
 
     const {
       _id,
-      block_number,
+      block_num,
       code,
       scope,
       table,
@@ -73,7 +75,7 @@ export class EscrwWorldsDeltaMongoMapper
 
     return new ContractDelta<DataEntityType>(
       _id.toString(),
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       code,
       scope,
       table,
@@ -88,8 +90,8 @@ export class EscrwWorldsDeltaMongoMapper
 
 // Processor Task Mapper
 export class EscrwWorldsDeltaProcessorTaskMapper extends MapperImpl<
-  ContractDelta<DataEntityType, EscrwWorldsDeltaRawModel>, 
-    EscrwWorldsDeltaRawModel
+  ContractDelta<DataEntityType, EscrwWorldsDeltaRawModel>,
+  EscrwWorldsDeltaRawModel
 > {
   public fromEntity(
     entity: ContractDelta<DataEntityType, EscrwWorldsDeltaRawModel>
@@ -108,7 +110,7 @@ export class EscrwWorldsDeltaProcessorTaskMapper extends MapperImpl<
     }
 
     const {
-      block_number,
+      block_num,
       code,
       scope,
       table,
@@ -120,7 +122,7 @@ export class EscrwWorldsDeltaProcessorTaskMapper extends MapperImpl<
 
     return new ContractDelta<DataEntityType, EscrwWorldsDeltaRawModel>(
       '',
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       code,
       scope,
       table,
@@ -128,7 +130,7 @@ export class EscrwWorldsDeltaProcessorTaskMapper extends MapperImpl<
       payer,
       parseToBigInt(primary_key),
       present,
-      block_timestamp,
+      block_timestamp
     );
   }
 }

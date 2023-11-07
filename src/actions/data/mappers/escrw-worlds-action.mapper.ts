@@ -3,8 +3,7 @@
  * Last updated on: Thu, 27 Jul 2023 15:07:29 GMT
  */
 
-
-import { 
+import {
   Approve,
   Cancel,
   Clean,
@@ -14,23 +13,26 @@ import {
   Refund,
   Transfer,
 } from '../../domain/entities';
-import { 
-  ContractAction, 
-  MapperImpl, 
-  parseToBigInt 
+import {
+  ContractAction,
+  MapperImpl,
+  parseToBigInt,
 } from '@alien-worlds/aw-core';
 
-import { ApproveMongoMapper, ApproveRawMapper } from "./approve.mapper";
-import { CancelMongoMapper, CancelRawMapper } from "./cancel.mapper";
-import { CleanMongoMapper, CleanRawMapper } from "./clean.mapper";
-import { DisapproveMongoMapper, DisapproveRawMapper } from "./disapprove.mapper";
-import { DisputeMongoMapper, DisputeRawMapper } from "./dispute.mapper";
-import { InitMongoMapper, InitRawMapper } from "./init.mapper";
-import { RefundMongoMapper, RefundRawMapper } from "./refund.mapper";
-import { TransferMongoMapper, TransferRawMapper } from "./transfer.mapper";
+import { ApproveMongoMapper, ApproveRawMapper } from './approve.mapper';
+import { CancelMongoMapper, CancelRawMapper } from './cancel.mapper';
+import { CleanMongoMapper, CleanRawMapper } from './clean.mapper';
+import {
+  DisapproveMongoMapper,
+  DisapproveRawMapper,
+} from './disapprove.mapper';
+import { DisputeMongoMapper, DisputeRawMapper } from './dispute.mapper';
+import { InitMongoMapper, InitRawMapper } from './init.mapper';
+import { RefundMongoMapper, RefundRawMapper } from './refund.mapper';
+import { TransferMongoMapper, TransferRawMapper } from './transfer.mapper';
 import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/escrw-worlds-action';
-import { 
+import {
   EscrwWorldsActionMongoModel,
   EscrwWorldsActionRawModel,
   ApproveMongoModel,
@@ -53,9 +55,10 @@ import {
 import { EscrwWorldsActionName } from '../../domain/enums';
 
 // Mongo Mapper
-export class EscrwWorldsActionMongoMapper
-  extends MongoMapper<ContractAction<DataEntityType>, EscrwWorldsActionMongoModel>
-{
+export class EscrwWorldsActionMongoMapper extends MongoMapper<
+  ContractAction<DataEntityType>,
+  EscrwWorldsActionMongoModel
+> {
   public fromEntity(
     entity: ContractAction<DataEntityType>
   ): EscrwWorldsActionMongoModel {
@@ -67,14 +70,10 @@ export class EscrwWorldsActionMongoMapper
         );
         break;
       case EscrwWorldsActionName.Cancel:
-        entityData = new CancelMongoMapper().fromEntity(
-          entity.data as Cancel
-        );
+        entityData = new CancelMongoMapper().fromEntity(entity.data as Cancel);
         break;
       case EscrwWorldsActionName.Clean:
-        entityData = new CleanMongoMapper().fromEntity(
-          entity.data as Clean
-        );
+        entityData = new CleanMongoMapper().fromEntity(entity.data as Clean);
         break;
       case EscrwWorldsActionName.Disapprove:
         entityData = new DisapproveMongoMapper().fromEntity(
@@ -87,14 +86,10 @@ export class EscrwWorldsActionMongoMapper
         );
         break;
       case EscrwWorldsActionName.Init:
-        entityData = new InitMongoMapper().fromEntity(
-          entity.data as Init
-        );
+        entityData = new InitMongoMapper().fromEntity(entity.data as Init);
         break;
       case EscrwWorldsActionName.Refund:
-        entityData = new RefundMongoMapper().fromEntity(
-          entity.data as Refund
-        );
+        entityData = new RefundMongoMapper().fromEntity(entity.data as Refund);
         break;
       case EscrwWorldsActionName.Transfer:
         entityData = new TransferMongoMapper().fromEntity(
@@ -105,9 +100,9 @@ export class EscrwWorldsActionMongoMapper
 
     const model: EscrwWorldsActionMongoModel = {
       block_timestamp: entity.blockTimestamp,
-      block_number: new MongoDB.Long(entity.blockNumber),
+      block_num: new MongoDB.Long(entity.blockNumber),
       global_sequence: new MongoDB.Long(entity.globalSequence),
-      receiver_sequence: new MongoDB.Long(entity.receiverSequence),
+      recv_sequence: new MongoDB.Long(entity.receiverSequence),
       trx_id: entity.transactionId,
       action: {
         name: entity.name,
@@ -117,7 +112,7 @@ export class EscrwWorldsActionMongoMapper
     };
 
     if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
-      model._id =  new MongoDB.ObjectId(entity.id);
+      model._id = new MongoDB.ObjectId(entity.id);
     }
 
     return model;
@@ -173,9 +168,9 @@ export class EscrwWorldsActionMongoMapper
     const {
       _id,
       block_timestamp,
-      block_number,
+      block_num,
       global_sequence,
-      receiver_sequence,
+      recv_sequence,
       trx_id,
       action,
     } = mongoModel;
@@ -183,13 +178,13 @@ export class EscrwWorldsActionMongoMapper
     return new ContractAction<DataEntityType>(
       _id.toString(),
       block_timestamp,
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       action.account,
       action.name,
       parseToBigInt(global_sequence),
-      parseToBigInt(receiver_sequence),
+      parseToBigInt(recv_sequence),
       trx_id,
-      data,
+      data
     );
   }
 }
@@ -216,14 +211,10 @@ export class EscrwWorldsActionProcessorTaskMapper extends MapperImpl<
         );
         break;
       case EscrwWorldsActionName.Cancel:
-        data = new CancelRawMapper().toEntity(
-          rawModel.data as CancelRawModel
-        );
+        data = new CancelRawMapper().toEntity(rawModel.data as CancelRawModel);
         break;
       case EscrwWorldsActionName.Clean:
-        data = new CleanRawMapper().toEntity(
-          rawModel.data as CleanRawModel
-        );
+        data = new CleanRawMapper().toEntity(rawModel.data as CleanRawModel);
         break;
       case EscrwWorldsActionName.Disapprove:
         data = new DisapproveRawMapper().toEntity(
@@ -236,14 +227,10 @@ export class EscrwWorldsActionProcessorTaskMapper extends MapperImpl<
         );
         break;
       case EscrwWorldsActionName.Init:
-        data = new InitRawMapper().toEntity(
-          rawModel.data as InitRawModel
-        );
+        data = new InitRawMapper().toEntity(rawModel.data as InitRawModel);
         break;
       case EscrwWorldsActionName.Refund:
-        data = new RefundRawMapper().toEntity(
-          rawModel.data as RefundRawModel
-        );
+        data = new RefundRawMapper().toEntity(rawModel.data as RefundRawModel);
         break;
       case EscrwWorldsActionName.Transfer:
         data = new TransferRawMapper().toEntity(
@@ -256,7 +243,7 @@ export class EscrwWorldsActionProcessorTaskMapper extends MapperImpl<
       account,
       name,
       block_timestamp,
-      block_number,
+      block_num,
       global_sequence,
       recv_sequence,
       transaction_id,
@@ -265,7 +252,7 @@ export class EscrwWorldsActionProcessorTaskMapper extends MapperImpl<
     return new ContractAction<DataEntityType, EscrwWorldsActionRawModel>(
       '',
       block_timestamp,
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       account,
       name,
       parseToBigInt(global_sequence),
