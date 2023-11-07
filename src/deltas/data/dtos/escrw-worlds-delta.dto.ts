@@ -27,7 +27,7 @@ export type EscrwWorldsDeltaMongoModel = {
 
 export type EscrwWorldsDeltaRawModel = {
   block_timestamp: Date;
-  block_num: string;
+  block_number: string;
   code: string;
   scope: string;
   table: string;
