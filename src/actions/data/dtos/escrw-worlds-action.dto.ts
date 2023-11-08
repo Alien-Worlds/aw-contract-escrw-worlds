@@ -37,9 +37,9 @@ export type DataRawType =
 export type EscrwWorldsActionMongoModel = {
   _id?: MongoDB.ObjectId;
   block_timestamp?: Date;
-  block_num?: MongoDB.Long;
+  block_number?: MongoDB.Long;
   global_sequence?: MongoDB.Long;
-  recv_sequence?: MongoDB.Long;
+  receiver_sequence?: MongoDB.Long;
   trx_id?: string;
   action_hash?: string;
   action?: {
@@ -60,3 +60,4 @@ export type EscrwWorldsActionRawModel = {
   data: DataRawType;
   [key: string]: unknown;
 };
+
